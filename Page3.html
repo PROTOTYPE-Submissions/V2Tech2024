@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher's Resources</title>
+<link rel="stylesheet" href="page3.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Teacher's Resources</h1>
+  
+  <!-- Form for uploading files -->
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="file">
+    <button type="submit" name="submit">Upload</button>
+  </form>
+
+  <!-- List of uploaded files -->
+  <h2>Uploaded Files:</h2>
+  <ul>
+    <?php
+      // Display uploaded files
+      $files = scandir("uploads");
+      foreach ($files as $file) {
+        if ($file !== '.' && $file !== '..') {
+          echo "<li><a href='uploads/$file' target='_blank'>$file</a></li>";
+        }
+      }
+    ?>
+  </ul>
+</div>
+
+</body>
+</html>
+

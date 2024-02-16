@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Section</title>
+<h1>Welcome Students and Teachers</h1>
+<link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="note-section">
+    <h2>Feedback</h2>
+    <p>Please write your feedback here:</p>
+    <textarea class="note-input" rows="4" placeholder="Write your feedback here if any....."></textarea>
+    <button class="note-submit" onclick="submitNote()">Submit Your Feedback</button>
+  </div>
+  <div id="display-notes"></div>
+</div>
+
+<script>
+  function submitNote() {
+    var note = document.querySelector('.note-input').value;
+    if (note.trim() === '') {
+      alert('Please enter a note!');
+      return;
+    }
+    var noteElement = document.createElement('div');
+    noteElement.className = 'note-section';
+    noteElement.innerHTML = '<p>' + note + '</p>';
+    document.getElementById('display-notes').appendChild(noteElement);
+    document.querySelector('.note-input').value = '';
+  }
+</script>
+
+</body>
+</html>
